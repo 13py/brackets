@@ -17,7 +17,7 @@ module.exports = function check(str, bracketsConfig) {
             }
         }
     }
-    return tempStack.length === 0 ? true : false;
+    return tempStack.length === 0;
 };
 
 // (i[0] === tempStack[tempStack.length - 1]) == i[0]
