@@ -2,6 +2,14 @@ module.exports = function check(str, bracketsConfig) {
     let tempStack = [];
     for (let n = 0; n < str.length; n++) {
         for (let i = 0; i < bracketsConfig.length; i++) {
+            if (str.length == 2 && str[0] == str[1]) {
+                return true;
+            }
+            // console.log(str[n], n, tempStack[tempStack.length - 1]);
+            if (str[n] == "|" && tempStack[tempStack.length - 1] == "|") {
+                tempStack.pop();
+                break;
+            }
             if (str[n] === bracketsConfig[i][0]) {
                 tempStack.push(str[n]);
             } else if (
@@ -9,6 +17,7 @@ module.exports = function check(str, bracketsConfig) {
                 bracketsConfig[i][0] === tempStack[tempStack.length - 1]
             ) {
                 tempStack.pop();
+                break;
             }
         }
     }
